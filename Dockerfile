@@ -7,6 +7,9 @@
 # Pull base image.
 FROM dockerfile/ubuntu
 
+# Add .config with REDIS_PASSWORD
+ADD .config /tmp/config
+
 # Install Redis.
 RUN \
   cd /tmp && \
@@ -22,7 +25,11 @@ RUN \
   sed -i 's/^\(bind .*\)$/# \1/' /etc/redis/redis.conf && \
   sed -i 's/^\(daemonize .*\)$/# \1/' /etc/redis/redis.conf && \
   sed -i 's/^\(dir .*\)$/# \1\ndir \/data/' /etc/redis/redis.conf && \
-  sed -i 's/^\(logfile .*\)$/# \1/' /etc/redis/redis.conf
+  sed -i 's/^\(logfile .*\)$/# \1/' /etc/redis/redis.conf && \
+  bash -c 'source /tmp/config && sed -i "s/^[# ]*\(requirepass\) .*$/\1 $REDIS_PASSWORD/" /etc/redis/redis.conf'
+
+# Clean config
+RUN rm /tmp/config
 
 # Define mountable directories.
 VOLUME ["/data"]
