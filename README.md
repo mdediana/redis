@@ -4,6 +4,7 @@
 This repository is based on **Dockerfile** of [Redis](http://redis.io/) for [Docker](https://www.docker.io/)'s [trusted build](https://index.docker.io/u/dockerfile/redis/) published to the public [Docker Registry](https://index.docker.io/). The differences are:
 
 * Adds Redis password configuration
+* Enables Redis logging
 
 
 ### Dependencies
