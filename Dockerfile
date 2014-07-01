@@ -25,7 +25,7 @@ RUN \
   sed -i 's/^\(bind .*\)$/# \1/' /etc/redis/redis.conf && \
   sed -i 's/^\(daemonize .*\)$/# \1/' /etc/redis/redis.conf && \
   sed -i 's/^\(dir .*\)$/# \1\ndir \/data/' /etc/redis/redis.conf && \
-  sed -i 's/^[# ]*\(logfile\).*$/\1 \/var\/log\/redis.log/' /etc/redis/redis.conf && \
+  sed -i 's/^[# ]*\(logfile\).*$/\1 \/log\/redis.log/' /etc/redis/redis.conf && \
   sed -i 's/^[# ]*\(loglevel\).*$/\1 notice/' /etc/redis/redis.conf && \
   bash -c 'source /tmp/config && sed -i "s/^[# ]*\(requirepass\) .*$/\1 $REDIS_PASSWORD/" /etc/redis/redis.conf'
 

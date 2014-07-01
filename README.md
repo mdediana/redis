@@ -5,7 +5,7 @@ This repository is based on **Dockerfile** of [Redis](http://redis.io/) for [Doc
 
 * Adds Redis password configuration
 * Enables Redis logging
-
+* Writes data to /data and logs /log. mdediana/data is a container with such directory layout.
 
 ### Dependencies
 
